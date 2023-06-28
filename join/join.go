@@ -9,24 +9,24 @@ import (
 
 func AppendArray(trainA, trainB []model.BOGIE) []model.BOGIE {
 	trainAB := []model.BOGIE{}
-	i, j := 0, 0
+	indexA, indexB := 0, 0
 	for {
-		if i >= len(trainA) || j >= len(trainB) {
+		if indexA >= len(trainA) || indexB >= len(trainB) {
 			break
 		}
-		if trainA[i].Distance > trainB[j].Distance {
-			trainAB = append(trainAB, trainA[i])
-			i++
+		if trainA[indexA].Distance > trainB[indexB].Distance {
+			trainAB = append(trainAB, trainA[indexA])
+			indexA++
 		} else {
-			trainAB = append(trainAB, trainB[j])
-			j++
+			trainAB = append(trainAB, trainB[indexB])
+			indexB++
 		}
 	}
 
-	if i == len(trainA) {
-		trainAB = append(trainAB, trainB[j:]...)
+	if indexA == len(trainA) {
+		trainAB = append(trainAB, trainB[indexB:]...)
 	} else {
-		trainAB = append(trainAB, trainA[i:]...)
+		trainAB = append(trainAB, trainA[indexA:]...)
 	}
 	return trainAB
 }
@@ -61,9 +61,9 @@ func ArrivalTrainOrderHyd(bogeyCount int) []model.BOGIE {
 		"GHY": 4700,
 	}
 
-	for i := 0; i < bogeyCount; i++ {
+	for index := 0; index < bogeyCount; index++ {
 		var stationCode string
-		fmt.Printf("enter the staion code of bogie %d ", i+1)
+		fmt.Printf("enter the staion code of bogie %d ", index+1)
 		Bogie := model.BOGIE{}
 		fmt.Scan(&stationCode)
 		if RouteA[stationCode] != 0 {
