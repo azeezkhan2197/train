@@ -7,7 +7,7 @@ import (
 	"github.com/azeezkhan2197/train/model"
 )
 
-func Append(trainA, trainB []model.BOGIE) []model.BOGIE {
+func AppendArray(trainA, trainB []model.BOGIE) []model.BOGIE {
 	trainAB := []model.BOGIE{}
 	i, j := 0, 0
 	for {
@@ -31,7 +31,7 @@ func Append(trainA, trainB []model.BOGIE) []model.BOGIE {
 	return trainAB
 }
 
-func ArrivalTrainHyd(bogeyCount int) []model.BOGIE {
+func ArrivalTrainOrderHyd(bogeyCount int) []model.BOGIE {
 	train := []model.BOGIE{}
 	RouteA := map[string]int{
 		"CHN": 0,

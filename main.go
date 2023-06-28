@@ -10,31 +10,26 @@ import (
 
 func main() {
 
-	var tACount, tBCount int
-	fmt.Println("enter the number of bogies for TRAIN A")
-	fmt.Scan(&tACount)
-	trainA := join.ArrivalTrainHyd(tACount)
-	fmt.Println("enter the number of bogies for TRAIN B")
-	fmt.Scan(&tBCount)
-	trainB := join.ArrivalTrainHyd(tBCount)
+	var trainACount, trainBCount int
+	fmt.Println("\nenter the number of bogies for TRAIN A")
+	fmt.Scan(&trainACount)
+	trainA := join.ArrivalTrainOrderHyd(trainACount)
+	fmt.Println("\nenter the number of bogies for TRAIN B")
+	fmt.Scan(&trainBCount)
+	trainB := join.ArrivalTrainOrderHyd(trainBCount)
 
-	fmt.Println()
-	fmt.Print("ARRIVAL   TRAIN_A ENGINE ")
+	fmt.Print("\nARRIVAL   TRAIN_A ENGINE ")
 	trainA = display.PrintArray(trainA)
-	fmt.Println()
-
-	fmt.Print("ARRIVAL   TRAIN_B ENGINE ")
+	
+	fmt.Print("\nARRIVAL   TRAIN_B ENGINE ")
 	trainB = display.PrintArray(trainB)
-	fmt.Println()
-
+	
 	sort.Quick_sort(trainA, 0, len(trainA)-1)
 	sort.Quick_sort(trainB, 0, len(trainB)-1)
 
-	trainAB := join.Append(trainA, trainB)
-	fmt.Print("DEPARTURE   TRAIN_AB ENGINE ENGINE ")
+	trainAB := join.AppendArray(trainA, trainB)
+	fmt.Print("\nDEPARTURE   TRAIN_AB ENGINE ENGINE ")
 	for _, val := range trainAB {
 		fmt.Printf(" %s ", val.Station)
 	}
-
-	fmt.Println()
 }
